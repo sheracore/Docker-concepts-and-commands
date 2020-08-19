@@ -17,3 +17,23 @@
 
 ## Docker
 ### Can download images from docker hub or make images with Dockfile
+## Docker command lines and utilities
+```
+sudo docker pull <docker name>
+sudo docker images
+sudo docker ps ---> show running containers
+sudo docker ps -a ---> show all containers that were runned and exited
+sudo docker run <docker name> if doesn't exist it pulls it
+sudo docker run busybox [collection of common linux commands(ls, cat, sleep,...)] ------  > like sudo docker run busybox ls
+sudo docker container prune
+sudo docker rm <CONTAINER ID> ---> delete contaiers that exited in <sudo docker ps -a>
+sudo docker rmi <image name> ---> remove image
+sudo docker container prune ---> delete all contaiers that exited in <sudo docker ps -a>
+sudo docker run --rm ---> Automatically remove the container when it exits
+-i = --interactive:     Keep STDIN open even if not attached
+-t = --tty:                  Allocate a pseudo-TTY
+sudo docker run --rm -it busybox
+sudo docker exec 9f14f56a57d1 touch /hi  ------> When the above command is running you can use this command to run sum commad with busybox commands
+sudo docker exec -it f6ee306b43b7 bash (Go to the image running shell or connect to f6ee306b43b7(This is running redis container) by bash (This is like ssh))
+sudo docker stop f6ee306b43b7 (stop running images)
+```
