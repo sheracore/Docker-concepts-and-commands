@@ -61,12 +61,11 @@ sudo docker run --rm --name redis redis
 sudo docker exec -it redis bash
 sudo docker exec -it redis bash redis-cli (run command line directly)
 ```
-<<<<<<< HEAD
 
 #### When you run a docker image on special port(e.i 6379 --> redis) you con connect it to your lacal's ip
 ```
-sudo docker run --rm --name redis -p6379:6379 redis```
-=======
+sudo docker run --rm --name redis -p6379:6379 redis
+```
 #### When you run a docker image on special port(e.i 6379 --> redis) you con connect it to your lacal's ip and use redis your local (e.i use it in your flask app)
 ```
 sudo docker run --rm --name redis -p6379:6379 redis
@@ -100,4 +99,3 @@ COPY app.py /app/main.py
 #### To add name to your image you can use ``` sudo docker build -t myapp:v1 . ```
 #### As you can see in below pic we have two containers myapp and redis and two contaier can be seen by OS but cant see each gether and now we want to connect together by their ports:
 ![redis and myapp container](/pics/dokcer.png)
->>>>>>> a636f0f9a0997fbe8e3e467e1b096189cae05000
