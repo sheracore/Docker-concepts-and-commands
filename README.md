@@ -73,3 +73,7 @@ docker run --rm --name  redis -p6379:6379 redis redis-server --appendonly yes
 #### When you run docker  by above command after exitition of redis and go to bash you can see appendonly.aof is created in /data
 #### But again we hava a problem that is data stored is in docker not in your local the solution is 'VOLUM' :
 ![docker volume](/pics/pic1)
+#### As you can see in this picture you can store piece of your stored data of docker in your local by -v or --mount([more information](https://docs.docker.com/storage/volumes/)):
+```
+
+```
