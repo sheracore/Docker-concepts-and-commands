@@ -70,4 +70,4 @@ sudo docker run --rm --name redis -p6379:6379 redis
 ```
 docker run --rm --name  redis -p6379:6379 redis redis-server --appendonly yes
 ```
-####When you run by above command after exitition of redis and go to bash you can see appendonly.aof is created in /data
+#### When you run by above command after exitition of redis and go to bash you can see appendonly.aof is created in /data
