@@ -84,7 +84,7 @@ docker run --rm --name  redis -p6379:6379 -v /tmp/data/redis:/data redis redis-s
 #use this tiangolo image
 FROM tiangolo/uwsgi-nginx-flask 
 #copy our app.py to app/main.py(from tiangolo docker image that tiangolo made it)
-COPY app.py app/main.py
+COPY app.py /app/main.py
 ```
 #### To add name to your image you can use ``` sudo docker build -t myapp:v1 . ```
 
