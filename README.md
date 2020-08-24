@@ -93,4 +93,4 @@ COPY app.py /app/main.py
 ```
 #### To add name to your image you can use ``` sudo docker build -t myapp:v1 . ```
 #### As you can see in below pic we have two containers myapp and redis and two contaier can be seen by OS but cant see each gether and now we want to connect together by their ports:
-![redis and myapp container](/pics/dokcer)
+![redis and myapp container](/pics/dokcer.png)
