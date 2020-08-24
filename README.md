@@ -61,7 +61,43 @@ sudo docker run --rm --name redis redis
 sudo docker exec -it redis bash
 sudo docker exec -it redis bash redis-cli (run command line directly)
 ```
+<<<<<<< HEAD
 
 #### When you run a docker image on special port(e.i 6379 --> redis) you con connect it to your lacal's ip
 ```
 sudo docker run --rm --name redis -p6379:6379 redis```
+=======
+#### When you run a docker image on special port(e.i 6379 --> redis) you con connect it to your lacal's ip and use redis your local (e.i use it in your flask app)
+```
+sudo docker run --rm --name redis -p6379:6379 redis
+```
+### Persistence data
+#### Above methods had a problem, that is when you disconnect your redis, its data removed and when you run it again you haven't previous data of redis.
+#### To resolve this type of problem you should read image on docker hub and find "persistent storage" section that creator told us how to use his image to maintain data, for example in redis we have this command:
+```
+docker run --rm --name  redis -p6379:6379 redis redis-server --appendonly yes
+```
+#### When you run docker  by above command after exitition of redis and go to bash you can see appendonly.aof is created in /data
+#### But again we hava a problem that is data stored is in docker not in your local the solution is 'VOLUM' :
+![docker volume](/pics/pic1)
+#### As you can see in this picture you can store piece of your stored data of docker in your local by -v or --mount([more information](https://docs.docker.com/storage/volumes/)) this command connect your local /tmp/data/redis(your create it) to /data(from your redis conrainer):
+```
+docker run --rm --name  redis -p6379:6379 -v /tmp/data/redis:/data redis redis-server --appendonly yes
+```
+#### Now to run our app.py by docker we shoul use ubunto or Alpine (light linux), python, flask, nginx, wsgi(for connect nginx to our flask) dockers but a docker to this, its name is tiagolo/uwsgi-nginx-flask [tiangolo](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/) :)
+#### We create a Dockfile contain below content and build it with ``` sudo docker build .```:
+```
+# use this tiangolo image
+FROM tiangolo/uwsgi-nginx-flask 
+# Add flask requirements to run flask                                          
+COPY ./requirements.txt /tmp/      
+# By RUN you can run any linux commands
+RUN pip install -r /tmp/requirements.txt  
+                                                                                    
+# Copy our app.py to app/main.py(from tiangolo docker image that tiangolo made it)
+COPY app.py /app/main.py
+```
+#### To add name to your image you can use ``` sudo docker build -t myapp:v1 . ```
+#### As you can see in below pic we have two containers myapp and redis and two contaier can be seen by OS but cant see each gether and now we want to connect together by their ports:
+![redis and myapp container](/pics/dokcer.png)
+>>>>>>> a636f0f9a0997fbe8e3e467e1b096189cae05000
