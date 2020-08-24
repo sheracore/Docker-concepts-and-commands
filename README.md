@@ -52,3 +52,22 @@ sudo docker exec 9f14f56a57d1 touch /hi  ------>
 sudo docker exec -it f6ee306b43b7 bash (Go to the image running shell or connect to f6ee306b43b7(This is running redis container) by bash (This is like ssh))
 sudo docker stop f6ee306b43b7 (stop running images)
 ```
+#### If you want to set name to docker run and use it by ecex
+```
+sudo docker run --rm --name redis redis
+```
+#### Connect to above run image by its name
+```
+sudo docker exec -it redis bash
+sudo docker exec -it redis bash redis-cli (run command line directly)
+```
+#### When you run a docker image on special port(e.i 6379 --> redis) you con connect it to your lacal's ip and use redis your local (e.i use it in your flask app)
+```
+sudo docker run --rm --name redis -p6379:6379 redis
+```
+####Above methods had a problem, that is when you disconnect your redis, its data removed and when you run it again you haven't previous data of redis.
+####To resolve this type of problem you should read image on docker hub and find "persistent storage" section that creator told us how to use his image to maintain data, for example in redis we have this command:
+```
+docker run --rm --name  redis -p6379:6379 redis redis-server --appendonly yes
+```
+####When you run by above command after exitition of redis and go to bash you can see appendonly.aof is created in /data
