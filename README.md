@@ -78,3 +78,4 @@ docker run --rm --name  redis -p6379:6379 redis redis-server --appendonly yes
 ```
 docker run --rm --name  redis -p6379:6379 -v /tmp/data/redis:/data redis redis-server --appendonly yes
 ```
+#### Now to run our app.py by docker we shoul use ubunto or Alpine (light linux), python, flask, nginx, wsgi(for connect nginx to our flask) dockers but a docker to this, its name is tiagolo/uwsgi-nginx-flask :)
