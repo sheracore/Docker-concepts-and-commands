@@ -65,6 +65,7 @@ sudo docker exec -it redis bash redis-cli (run command line directly)
 ```
 sudo docker run --rm --name redis -p6379:6379 redis
 ```
+### Persistence data
 #### Above methods had a problem, that is when you disconnect your redis, its data removed and when you run it again you haven't previous data of redis.
 #### To resolve this type of problem you should read image on docker hub and find "persistent storage" section that creator told us how to use his image to maintain data, for example in redis we have this command:
 ```
@@ -73,7 +74,7 @@ docker run --rm --name  redis -p6379:6379 redis redis-server --appendonly yes
 #### When you run docker  by above command after exitition of redis and go to bash you can see appendonly.aof is created in /data
 #### But again we hava a problem that is data stored is in docker not in your local the solution is 'VOLUM' :
 ![docker volume](/pics/pic1)
-#### As you can see in this picture you can store piece of your stored data of docker in your local by -v or --mount([more information](https://docs.docker.com/storage/volumes/)):
+#### As you can see in this picture you can store piece of your stored data of docker in your local by -v or --mount([more information](https://docs.docker.com/storage/volumes/)) this command connect your local /tmp/data/redis(your create it) to /data(from your redis conrainer):
 ```
-
+docker run --rm --name  redis -p6379:6379 -v /tmp/data/redis:/data redis redis-server --appendonly yes
 ```
