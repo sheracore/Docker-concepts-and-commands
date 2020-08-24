@@ -65,8 +65,8 @@ sudo docker exec -it redis bash redis-cli (run command line directly)
 ```
 sudo docker run --rm --name redis -p6379:6379 redis
 ```
-####Above methods had a problem, that is when you disconnect your redis, its data removed and when you run it again you haven't previous data of redis.
-####To resolve this type of problem you should read image on docker hub and find "persistent storage" section that creator told us how to use his image to maintain data, for example in redis we have this command:
+#### Above methods had a problem, that is when you disconnect your redis, its data removed and when you run it again you haven't previous data of redis.
+#### To resolve this type of problem you should read image on docker hub and find "persistent storage" section that creator told us how to use his image to maintain data, for example in redis we have this command:
 ```
 docker run --rm --name  redis -p6379:6379 redis redis-server --appendonly yes
 ```
