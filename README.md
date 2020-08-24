@@ -78,4 +78,13 @@ docker run --rm --name  redis -p6379:6379 redis redis-server --appendonly yes
 ```
 docker run --rm --name  redis -p6379:6379 -v /tmp/data/redis:/data redis redis-server --appendonly yes
 ```
-#### Now to run our app.py by docker we shoul use ubunto or Alpine (light linux), python, flask, nginx, wsgi(for connect nginx to our flask) dockers but a docker to this, its name is tiagolo/uwsgi-nginx-flask [itangolo](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/) :)
+#### Now to run our app.py by docker we shoul use ubunto or Alpine (light linux), python, flask, nginx, wsgi(for connect nginx to our flask) dockers but a docker to this, its name is tiagolo/uwsgi-nginx-flask [tiangolo](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/) :)
+#### We create a Dockfile contain below content and build it with ``` sudo docker build .```:
+```
+#use this tiangolo image
+FROM tiangolo/uwsgi-nginx-flask 
+#copy our app.py to app/main.py(from tiangolo docker image that tiangolo made it)
+COPY app.py app/main.py
+```
+#### To add name to your image you can use ``` sudo docker build -t myapp:v1 . ```
+
