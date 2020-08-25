@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def say_hello():
-    r = redis.Redis(host='localhost', port=6379, db=0)
+    r = redis.Redis(host='redis', port=6379, db=0)
     name = r.get('name').decode()
     #print(name)
     return name
