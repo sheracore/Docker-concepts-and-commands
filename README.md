@@ -97,7 +97,33 @@ RUN pip install -r /tmp/requirements.txt
 COPY app.py /app/main.py
 ```
 #### To add name to your image you can use ``` sudo docker build -t myapp:v1 . ```
-#### As you can see in below pic we have two containers myapp and redis and two contaier can be seen by OS but cant see each gether and now we want to connect together by their ports:
+#### As you can see in below pic we have two containers myapp and redis and two contaier can be seen by OS but can't be see  each together and now we want to connect together by create a network:
 ![redis and myapp container](/pics/dokcer)
 ![redis and myapp container](/pics/docker2.png)
-
+#### By this command you can create a network
+```
+sudo docker network create flask
+# You can see your network by
+sudo docker network ls
+```
+#### Now you should run your dockers on this network like this
+```
+sudo docker run --rm --name  redis -p6379:6379 --network flask -v /tmp/data/redis:/data redis redis-server --appendonly yes
+sudo docker run --rm -p80:80 --name myapp --network flask myapp:v3
+```
+#### But it doesn't work because two container connect to OS that it's not necessary anymore and dockers can see each other by container names.
+```
+# removing p6379:6379
+docker run --rm --name  redis --network flask -v /tmp/data/redis:/data redis redis-server --appendonly yes
+# Notic that we dont change p80:80 in our image
+```
+#### we should change our app to:
+```
+localhost ---> redis
+r = redis.Redis(host='redis', port=6379, db=0)
+```
+### And Done and you can run ``` curl 0.0.0.0:80 ``` and see your result also you can ping redis in your myapp bash like this:
+```
+sudo docker exec -it myapp bash
+> ping redis
+```
