@@ -61,6 +61,11 @@ sudo docker run --rm --name redis redis
 sudo docker exec -it redis bash
 sudo docker exec -it redis bash redis-cli (run command line directly)
 ```
+
+#### When you run a docker image on special port(e.i 6379 --> redis) you con connect it to your lacal's ip
+```
+sudo docker run --rm --name redis -p6379:6379 redis
+```
 #### When you run a docker image on special port(e.i 6379 --> redis) you con connect it to your lacal's ip and use redis your local (e.i use it in your flask app)
 ```
 sudo docker run --rm --name redis -p6379:6379 redis
