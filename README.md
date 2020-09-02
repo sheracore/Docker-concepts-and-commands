@@ -100,7 +100,7 @@ COPY app.py /app/main.py
 #### As you can see in below pic we have two containers myapp and redis and two contaier can be seen by OS but can't be see  each together and now we want to connect together by create a network:
 ![redis and myapp container](/pics/dokcer)
 ![redis and myapp container](/pics/docker2.png)
-#### By this command you can create a network
+#### Using this command you can create a network
 ```
 sudo docker network create flask
 # You can see your network by
