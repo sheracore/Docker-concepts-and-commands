@@ -16,7 +16,7 @@
 #### Easy to deploy
 
 ## Docker
-### Can download images from docker hub or make images with Dockfile
+### In docker images can be downloaded from docker hub or make images with Dockfile
 ## Docker command lines and utilities
 ```
 sudo docker pull <docker name>
