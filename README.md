@@ -127,3 +127,23 @@ r = redis.Redis(host='redis', port=6379, db=0)
 sudo docker exec -it myapp bash
 > ping redis
 ```
+
+### Docker-compose
+#### Docker-compose is managing dockers.
+#### It's format is yml look at the sample --> docker-comose.yml
+
+```
+version: "3"
+
+services: 
+  app: 
+    build: 
+      context: .
+    ports: 
+      - "8000:8000"
+    volumes: 
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+
+```
