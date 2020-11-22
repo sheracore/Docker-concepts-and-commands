@@ -16,7 +16,7 @@
 #### Easy to deploy
 
 ## Docker
-### Can download images from docker hub or make images with Dockfile
+### In docker images can be downloaded from docker hub or make images with Dockfile
 ## Docker command lines and utilities
 ```
 sudo docker pull <docker name>
@@ -97,7 +97,7 @@ RUN pip install -r /tmp/requirements.txt
 COPY app.py /app/main.py
 ```
 #### To add name to your image you can use ``` sudo docker build -t myapp:v1 . ```
-#### As you can see in below pic we have two containers myapp and redis and two contaier can be seen by OS but can't be see  each together and now we want to connect together by create a network:
+#### As you can see in below picture we have two containers myapp and redis and two contaiers can be seen by OS but thay can't see each gether and now we want to connect them by create a network:
 ![redis and myapp container](/pics/dokcer)
 ![redis and myapp container](/pics/docker2.png)
 #### Using this command you can create a network
@@ -126,4 +126,30 @@ r = redis.Redis(host='redis', port=6379, db=0)
 ```
 sudo docker exec -it myapp bash
 > ping redis
+```
+
+### Docker-compose
+#### Docker-compose is for managing containers.
+#### By docker-compose we can use some different containers in one service
+![docker-compose](/pics/docker-compose.png)
+![docker-compose](/pics/docker-compose2.png)
+![docker-compose](/pics/docker-compose3.png)
+![docker-compose](/pics/docker-compose4.png)
+![docker-compose](/pics/docker-compose5.png)
+#### It's format is yml look at the sample --> docker-comose.yml
+
+```
+version: "3"
+
+services: 
+  app: 
+    build: 
+      context: .
+    ports: 
+      - "8000:8000"
+    volumes: 
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+
 ```
