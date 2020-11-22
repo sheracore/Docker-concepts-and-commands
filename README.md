@@ -129,7 +129,8 @@ sudo docker exec -it myapp bash
 ```
 
 ### Docker-compose
-#### Docker-compose is managing dockers.
+#### Docker-compose is for managing containers.
+#### By docker-compose we can use some different containers in one service
 #### It's format is yml look at the sample --> docker-comose.yml
 
 ```
