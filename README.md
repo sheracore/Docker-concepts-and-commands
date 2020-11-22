@@ -131,11 +131,11 @@ sudo docker exec -it myapp bash
 ### Docker-compose
 #### Docker-compose is for managing containers.
 #### By docker-compose we can use some different containers in one service
-![docker-compose](/pic/docker-compose.png)
-![docker-compose](/pic/docker-compose2.png)
-![docker-compose](/pic/docker-compose3.png)
-![docker-compose](/pic/docker-compose4.png)
-![docker-compose](/pic/docker-compose5.png)
+![docker-compose](/pics/docker-compose.png)
+![docker-compose](/pics/docker-compose2.png)
+![docker-compose](/pics/docker-compose3.png)
+![docker-compose](/pics/docker-compose4.png)
+![docker-compose](/pics/docker-compose5.png)
 #### It's format is yml look at the sample --> docker-comose.yml
 
 ```
