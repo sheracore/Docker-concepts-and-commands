@@ -39,6 +39,7 @@ sudo docker rm <CONTAINER ID> ---> delete contaiers that exited in <sudo docker 
 sudo docker container prune
 sudo docker rmi <image name> ---> remove image
 sudo docker container prune ---> delete all contaiers that exited in <sudo docker ps -a>
+sudo docker system prune --all --volumes --force ----> It's very important it's for deleting all storage occuped by docker in the above approached your storage doesn't chages
 ```
 #### Automatically remove the container when it exits
 ```
